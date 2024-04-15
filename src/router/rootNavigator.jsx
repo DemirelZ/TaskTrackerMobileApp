@@ -3,7 +3,8 @@ import React from 'react';
 import Home from '../screens/Home';
 import AddTask from '../screens/AddTask';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { ADDTASKS, TASKS } from '../utils/routes';
+import { ADDTASKS, TASKDETAIL, TASKS } from '../utils/routes';
+import TaskDetail from '../screens/TaskDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ const RootNavigator = () => {
     <Stack.Navigator>
       <Stack.Screen name={TASKS} component={Home} />
       <Stack.Screen name={ADDTASKS} component={AddTask} />
+      <Stack.Screen name={TASKDETAIL} component={TaskDetail} />
     </Stack.Navigator>
   );
 };
