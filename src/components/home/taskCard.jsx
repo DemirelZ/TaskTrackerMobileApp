@@ -5,28 +5,46 @@ import {View, Text, StyleSheet, Pressable} from 'react-native';
 import moment from 'moment';
 import {useNavigation} from '@react-navigation/native';
 import {TASKDETAIL} from '../../utils/routes';
+import {taskVlues} from '../../utils/constants';
 // create a component
 const TaskCard = ({item}) => {
   const navigation = useNavigation();
   return (
     <Pressable
       style={styles.container}
-      onPress={() => navigation.navigate(TASKDETAIL)}>
-      <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
-        {item?.title}
-      </Text>
-      <Text style={{fontSize: 14, fontWeight: '300', color: 'gray'}}>
-        {item?.description}
-      </Text>
-      <View style={{flexDirection: 'row'}}>
-        <View style={{flex: 1}}>
-          <Text style={{fontSize: 14, fontWeight: '300', color: 'gray'}}>
-            {moment(item.startDate).format('DD/MM/YYYY')} -
-            {moment(item.endDate).format('DD/MM/YYYY')}
-          </Text>
+      onPress={() => navigation.navigate(TASKDETAIL, {item: item})}>
+      <View style={{flexDirection: 'row', gap: 10}}>
+        <View
+          style={{
+            backgroundColor: taskVlues.find(
+              task => task.status === item?.status,
+            )?.color,
+            flex: 1,
+            padding: 3,
+            borderRadius: 5,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          {taskVlues.find(task => task.status === item?.status)?.icon}
         </View>
-        {/* <View style={{flex: 1}}><Text>{item.category}</Text></View> */}
+        <View style={{flex: 9}}>
+          <View>
+            <Text style={{fontSize: 16, fontWeight: '600', color: 'black'}}>
+              {item?.title}
+            </Text>
+            <Text style={{fontSize: 14, fontWeight: '300', color: 'gray'}}>
+              {item?.description}
+            </Text>
+          </View>
+          <View>
+            <Text style={{fontSize: 14, fontWeight: '300', color: 'gray'}}>
+              {moment(item.startDate).format('DD/MM/YYYY')} -
+              {moment(item.endDate).format('DD/MM/YYYY')}
+            </Text>
+          </View>
+        </View>
       </View>
+      {/* <View style={{flex: 1}}><Text>{item.category}</Text></View> */}
     </Pressable>
   );
 };

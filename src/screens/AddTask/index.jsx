@@ -7,9 +7,7 @@ import CustomDatePicker from '../../components/uı/customDatePicker';
 import {taskSchema} from '../../utils/validations';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {status} from '../../utils/constants';
-import 'react-native-get-random-values'
-import { v4 as uuid } from 'uuid'
-
+import uuid from 'react-native-uuid';
 
 const AddTask = () => {
   const saveTask = async newTask => {
@@ -28,7 +26,7 @@ const AddTask = () => {
     <View style={styles.container}>
       <Formik
         initialValues={{
-          id: uuid(),
+          id: uuid.v4(),
           title: '',
           description: '',
           startDate: null,
