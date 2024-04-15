@@ -52,7 +52,7 @@ const TaskDetail = ({route}) => {
       });
 
       // Güncellenmiş görevleri depola
-      await AsyncStorage.setItem('tasks', JSON.stringify(updatedTasks));
+      await AsyncStorage.setItem('@tasks', JSON.stringify(updatedTasks));
       console.log('Görev güncellendi:', updatedTasks);
     } catch (error) {
       console.error('Görev güncellenirken hata oluştu:', error);
