@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {status} from '../../utils/constants';
 import uuid from 'react-native-uuid';
 
-const AddTask = () => {
+const AddTask = ({navigation}) => {
   const saveTask = async newTask => {
     try {
       const savedTasks = await AsyncStorage.getItem('@tasks');
@@ -20,6 +20,7 @@ const AddTask = () => {
     } catch (error) {
       console.log(error);
     }
+    navigation.goBack();
   };
 
   return (

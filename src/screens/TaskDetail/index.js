@@ -9,7 +9,7 @@ import {status, taskVlues} from '../../utils/constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // create a component
-const TaskDetail = ({route}) => {
+const TaskDetail = ({route, navigation}) => {
   const {item} = route?.params;
   const deleteTask = async () => {
     try {
@@ -29,6 +29,8 @@ const TaskDetail = ({route}) => {
     } catch (error) {
       console.error('Görev silinirken hata oluştu:', error);
     }
+
+    navigation.goBack();
   };
 
   const updateTask = async newStatus => {
@@ -57,6 +59,7 @@ const TaskDetail = ({route}) => {
     } catch (error) {
       console.error('Görev güncellenirken hata oluştu:', error);
     }
+    navigation.goBack();
   };
   return (
     <View style={styles.container}>
@@ -127,8 +130,8 @@ const TaskDetail = ({route}) => {
         <Button
           onPress={() => updateTask(status.PENDING)}
           style={styles.button}
-          status="primary">
-          START
+          status="warning">
+          PENDING
         </Button>
         <Button
           onPress={() => updateTask(status.COMPLATED)}
@@ -142,7 +145,7 @@ const TaskDetail = ({route}) => {
           status="danger">
           CANCEL
         </Button>
-        <Button onPress={deleteTask} style={styles.button} status="warning">
+        <Button onPress={deleteTask} style={styles.button} status="basic">
           DELETE
         </Button>
       </View>

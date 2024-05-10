@@ -16,28 +16,28 @@ const HeaderComponent = ({Ongoing, Pending, Complated, Cancel}) => {
       title: 'Ongoing',
       icon: <ChartCircle size="32" color={AppColors.WHITE} />,
       color: AppColors.ONGOING,
-      count:Ongoing
+      count: Ongoing,
     },
     {
       id: 2,
       title: 'Pending',
       icon: <Clock size="32" color={AppColors.WHITE} />,
       color: AppColors.PENDING,
-      count:Pending
+      count: Pending,
     },
     {
       id: 3,
       title: 'Complated',
       icon: <TickCircle size="32" color={AppColors.WHITE} />,
       color: AppColors.COMPLATED,
-      count:Complated
+      count: Complated,
     },
     {
       id: 4,
       title: 'Cancel',
       icon: <CloseCircle size="32" color={AppColors.WHITE} />,
       color: AppColors.CANCEL,
-      count:Cancel
+      count: Cancel,
     },
   ];
 
@@ -61,11 +61,11 @@ const HeaderComponent = ({Ongoing, Pending, Complated, Cancel}) => {
           }}>
           <View>
             <Text
-              style={{color: AppColors.WHITE, fontSize: 14, fontWeight: '600'}}>
+              style={{color: AppColors.WHITE, fontSize: 18, fontWeight: '600'}}>
               {item.title}
             </Text>
             <Text
-              style={{color: AppColors.WHITE, fontSize: 16, fontWeight: '600'}}>
+              style={{color: AppColors.WHITE, fontSize: 20, fontWeight: '600'}}>
               {item.count} Task
             </Text>
           </View>
